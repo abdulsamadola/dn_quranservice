@@ -1,19 +1,55 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import { AppLoading } from "expo";
+import * as Font from "expo-font";
+import { Root, Container } from "native-base";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+import { createStackNavigator } from "react-navigation";
+import Initiatives from "./src/screens/initiatives";
+import SideBar from "./src/screens/sidebar";
+import About from "./src/screens/About";
+import Index from "./index";
+//import Bookmark from '../screens/bookmark'
+const AppNavigator = createStackNavigator({
+  IndexScreen: { screen: Index },
+  //BookmarkScreen: { screen: Bookmark },
+  SideScreen: { screen: SideBar },
+  InitScreen: { screen: Initiatives },
+  AboutScreen: { screen: About }
 });
+
+console.disableYellowBox = true;
+
+export default class App extends Component {
+  state = {
+    fontLoaded: false
+  };
+  async componentWillMount() {
+    await Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+    });
+    this.setState({
+      fontLoaded: true
+    });
+  }
+
+  render() {
+    if (!this.state.fontLoaded) {
+      return <AppLoading />;
+    }
+
+    return (
+      <Root>
+        <Container
+          style={{
+            paddingTop:
+              Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight
+          }}
+        >
+          <AppNavigator />
+        </Container>
+      </Root>
+    );
+  }
+}
