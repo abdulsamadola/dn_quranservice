@@ -51,7 +51,7 @@ export default class ListIconExample extends PureComponent {
         </Header>
         <Content>
           <ListItem
-            onPress={() => Linking.openURL("https://dawahnigeria.com/qs/")}
+            onPress={() => Linking.openURL("https://dawahnigeria.com/support/")}
             icon
           >
             <Left>

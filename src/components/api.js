@@ -124,18 +124,5 @@ export const reciterData = [
     reciterName: "Qaari Salih Musa Ozovehe",
     reciterDesc: "Adabiy",
     reciterURL: "http://185.164.35.20:8030/salihozovehe.aac"
-  },
-  //Additional Endpoints
-  {
-    id: "22",
-    reciterName: "Ustadh Bashir Abu-Fatimoh",
-    reciterDesc: "",
-    reciterURL: "http://192.168.137.1/dn/2.mp3"
-  },
-  {
-    id: "22",
-    reciterName: "Abdulsomod Sulayman",
-    reciterDesc: "",
-    reciterURL: "http://192.168.137.1/dn/1.mp3"
   }
 ];

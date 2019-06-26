@@ -1,24 +1,14 @@
 import React, { PureComponent } from "react";
 import {
   Container,
-  Spinner,
   Header,
   Title,
-  Content,
-  Footer,
-  FooterTab,
   Button,
-  Left,
-  Right,
   Body,
   Icon,
   Text,
   List,
   ListItem,
-  Tab,
-  Tabs,
-  ScrollableTab,
-  Toast,
   Drawer,
   H1,
   Thumbnail
@@ -147,8 +137,10 @@ class Index extends PureComponent {
         { uri: item.reciterURL },
         { shouldPlay: false }
       );
+
       this.playBack = sound;
       this.playBack.playAsync();
+
       this.setState({
         reciterName: item.reciterName,
         reciterDesc: item.reciterDesc

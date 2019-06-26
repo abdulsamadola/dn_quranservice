@@ -9,10 +9,8 @@ import Initiatives from "./src/screens/initiatives";
 import SideBar from "./src/screens/sidebar";
 import About from "./src/screens/About";
 import Index from "./index";
-//import Bookmark from '../screens/bookmark'
 const AppNavigator = createStackNavigator({
   IndexScreen: { screen: Index },
-  //BookmarkScreen: { screen: Bookmark },
   SideScreen: { screen: SideBar },
   InitScreen: { screen: Initiatives },
   AboutScreen: { screen: About }
