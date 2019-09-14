@@ -13,7 +13,13 @@ import {
   H1,
   Thumbnail
 } from "native-base";
-import { StyleSheet, View, ImageBackground, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  StatusBar,
+  ActivityIndicator
+} from "react-native";
 import { reciterData } from "./src/components/api";
 import SideBar from "./src/screens/sidebar";
 import { Audio } from "expo";
@@ -36,13 +42,30 @@ class Index extends PureComponent {
     super(props);
     this.state = {
       reciterList: [],
-      reciterName: "Select Reciter",
-      reciterDesc: ""
+      reciter_name: "Select Reciter",
+      reciterDesc: "",
+      recitersData: [],
+      isLoading: true
     };
     this.playBack = null;
   }
   componentDidMount() {
     this.setupAudio();
+    this.reciterDataHandler();
+  }
+
+  reciterDataHandler() {
+    reciterData().then(
+      data => {
+        this.setState({
+          recitersData: data,
+          isLoading: false
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   async setupAudio() {
@@ -59,6 +82,32 @@ class Index extends PureComponent {
   }
 
   render() {
+    const mainView = this.state.isLoading ? (
+      <View style={styles.listContainer}>
+        <ActivityIndicator
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 25
+          }}
+          color="#43991a"
+        />
+        <Text
+          style={{
+            alignSelf: "center"
+          }}
+        >
+          Loading reciters, Please Wait...
+        </Text>
+      </View>
+    ) : (
+      <View style={styles.listContainer}>
+        <List
+          dataArray={this.state.recitersData}
+          renderRow={item => this.renderList(item)}
+        />
+      </View>
+    );
     return (
       <Drawer
         ref={ref => {
@@ -90,18 +139,13 @@ class Index extends PureComponent {
               style={styles.imgContainer}
             >
               <View style={styles.topContainer}>
-                <H1 style={{ color: "#fff" }}>{this.state.reciterName}</H1>
+                <H1 style={{ color: "#fff" }}>{this.state.reciter_name}</H1>
                 <Text style={{ color: "#fff" }} note>
                   {this.state.reciterDesc}
                 </Text>
               </View>
             </ImageBackground>
-            <View style={styles.listContainer}>
-              <List
-                dataArray={reciterData}
-                renderRow={item => this.renderList(item)}
-              />
-            </View>
+            {mainView}
           </View>
         </Container>
       </Drawer>
@@ -112,7 +156,7 @@ class Index extends PureComponent {
       <ListItem onPress={() => this.playReciter(item)}>
         <Thumbnail size={80} square source={require("./src/images/dn.png")} />
         <Body>
-          <Text>{item.reciterName}</Text>
+          <Text>{item.reciter_name}</Text>
           <Text note>{item.reciterDesc}</Text>
         </Body>
       </ListItem>
@@ -121,7 +165,7 @@ class Index extends PureComponent {
 
   async playReciter(item) {
     this.setState({
-      reciterName: "Loading, Please Wait...",
+      reciter_name: "Loading, Please Wait...",
       reciterDesc: ""
     });
 
@@ -135,7 +179,7 @@ class Index extends PureComponent {
     //Start Playing
     try {
       const { sound, status } = await Audio.Sound.createAsync(
-        { uri: item.reciterURL },
+        { uri: item.mount_point },
         { shouldPlay: false }
       );
 
@@ -143,12 +187,13 @@ class Index extends PureComponent {
       this.playBack.playAsync();
 
       this.setState({
-        reciterName: item.reciterName,
+        reciter_name: item.reciter_name,
         reciterDesc: item.reciterDesc
       });
     } catch (err) {
       this.setState({
-        reciterName: "There's a problem loading this reciter, please try again",
+        reciter_name:
+          "There's a problem loading this reciter, please try again",
         reciterDesc: ""
       });
     }
