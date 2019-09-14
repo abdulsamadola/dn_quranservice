@@ -1,10 +1,10 @@
 {
-  "webpackServerPort": 19003,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "packagerPort": 19001,
+  "packagerPid": 17568,
+  "webpackServerPort": null,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": null,
-  "packagerPid": null
+  "expoServerNgrokUrl": "https://4x-3kk.360campstore.dn-quranservice.exp.direct",
+  "packagerNgrokUrl": "https://packager.4x-3kk.360campstore.dn-quranservice.exp.direct",
+  "ngrokPid": 2176
 }

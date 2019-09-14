@@ -16,7 +16,7 @@ import {
 import { StyleSheet, View, ImageBackground, StatusBar } from "react-native";
 import { reciterData } from "./src/components/api";
 import SideBar from "./src/screens/sidebar";
-import { Audio } from "expo-av";
+import { Audio } from "expo";
 
 console.disableYellowBox = true;
 class Index extends PureComponent {
@@ -53,7 +53,8 @@ class Index extends PureComponent {
       interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
       playsInSilentModeIOS: true,
       shouldDuckAndroid: true,
-      interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX
+      interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+      playThroughEarpieceAndroid: false
     });
   }
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import { AppLoading } from "expo";
+import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 import { Root, Container } from "native-base";
 
@@ -22,11 +23,20 @@ export default class App extends Component {
   state = {
     fontLoaded: false
   };
+
   async componentWillMount() {
-    await Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
-    });
+    Promise.all([
+      Asset.loadAsync([
+        require("./assets/icon.png"),
+        require("./assets/splash.png"),
+        require("./src/images/dn.png"),
+        require("./src/images/mp3.gif")
+      ])
+    ]),
+      await Font.loadAsync({
+        Roboto: require("native-base/Fonts/Roboto.ttf"),
+        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+      });
     this.setState({
       fontLoaded: true
     });

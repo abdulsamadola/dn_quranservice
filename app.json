@@ -3,28 +3,30 @@
     "name": "DN Quran",
     "slug": "DN_QuranService",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
-    "platforms": ["ios", "android", "web"],
+    "sdkVersion": "32.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#43991a"
+      "resizeMode": "cover"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["./assets/*", "./src/images/*"],
+    "assetBundlePatterns": [
+      "./assets/",
+      "./src/images/"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "package": "com.dn_quranservice"
-    },
-    "packagerOpts": {
-      "nonPersistent": true
+      "package": "com.dn.quranservice"
     },
     "description": " 24/7 online Quran stations that stream quran from various Nigerian reciters."
   }

@@ -144,7 +144,7 @@ export default class About extends Component {
                 </Text>
                 <H3
                   style={{
-                    marginLeft: 100
+                    marginLeft: 150
                   }}
                 >
                   [SIGNED]
