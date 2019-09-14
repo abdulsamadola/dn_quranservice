@@ -11,7 +11,8 @@ import {
   Left,
   Icon,
   H2,
-  H3
+  H3,
+  View
 } from "native-base";
 import Headery from "./myHeader";
 
@@ -30,7 +31,7 @@ export default class About extends Component {
           <Card>
             <CardItem>
               <Body>
-                <Text selectable={true}>
+                <Text>
                   All thanks and praises be to Allah. May his peace and blessing
                   be on the noble Prophet (sallallahu aleihi wa sallam), his
                   companions and those who follow his path till the day of
@@ -43,7 +44,7 @@ export default class About extends Component {
           <Card>
             <CardItem>
               <Body>
-                <Text selectable={true}>
+                <Text>
                   The dawahnigeria.com project arose out of a desire to provide
                   a platform for reaching out to the teeming Nigerian Muslim
                   populace. It aims to be a convergence point for Muslims in
@@ -63,9 +64,7 @@ export default class About extends Component {
 
           <Card>
             <CardItem>
-              <Text style={{ color: "#458d10" }} selectable={true}>
-                Objectives
-              </Text>
+              <Text style={{ color: "#458d10" }}>Objectives</Text>
             </CardItem>
 
             <CardItem>
@@ -129,31 +128,33 @@ export default class About extends Component {
 
           <Card>
             <CardItem>
-              <Text style={{ color: "#458d10" }} selectable={true}>
-                Support and Contribution
-              </Text>
+              <Text style={{ color: "#458d10" }}>Support and Contribution</Text>
             </CardItem>
 
             <CardItem>
               <Body>
-                <Text selectable={true}>
+                <Text>
                   The enormity of the project has made its full execution
                   impossible with the resources at our disposal now. We are in
                   need for assistance in the execution of the remaining phases
                   and maintenance of our current infrastructure. {`\n`}
                 </Text>
-                <H3
-                  style={{
-                    marginLeft: 150
-                  }}
+                <View
+                  style={{ justifyContent: "center", alignItems: "center" }}
                 >
-                  [SIGNED]
-                </H3>
-                <H3 style={{ justifyContent: "center", fontSize: 16 }}>
-                  {`\n`}
-                  Coordinator The E-dawah Foundation GEM Building, Klm 2,
-                  Arulogun Road, Ojoo, Ibadan
-                </H3>
+                  <H3
+                    style={{
+                      alignSelf: "center",
+                      fontSize: 14
+                    }}
+                  >
+                    [SIGNED]
+                  </H3>
+                  <H3 style={{ justifyContent: "center", fontSize: 14 }}>
+                    Coordinator The E-dawah Foundation GEM Building, Klm 2,
+                    Arulogun Road, Ojoo, Ibadan
+                  </H3>
+                </View>
               </Body>
             </CardItem>
           </Card>
